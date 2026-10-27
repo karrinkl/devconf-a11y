@@ -1,0 +1,22 @@
+# зависимости
+node_modules
+
+# сборка Next.js
+.next
+out
+
+# локальные настройки
+.env*.local
+
+# журналы и служебные файлы
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# отчёты тестов
+coverage
+playwright-report
+test-results
+blob-report
+/playwright/.cache

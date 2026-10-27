@@ -1,0 +1,42 @@
+{
+  "name": "devconf-a11y",
+  "version": "6.0.0",
+  "private": true,
+  "description": "Лабораторная работа № 30. Доступность (WCAG 2.2 AA) лендинга IT-конференции DEVCONF 2026: аудит axe и Lighthouse, клавиатурная навигация, ARIA",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
+    "test:a11y": "playwright test e2e/a11y.spec.js e2e/keyboard.spec.js"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@reduxjs/toolkit": "^2.5.0",
+    "bootstrap": "^5.3.3",
+    "next": "^16.4.3",
+    "prop-types": "^15.8.1",
+    "react": "^19.2.0",
+    "react-bootstrap": "^2.10.6",
+    "react-dom": "^19.2.0",
+    "react-redux": "^9.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.63.0",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2"
+  }
+}

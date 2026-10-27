@@ -1,0 +1,21 @@
+/*
+  Иконка выводится как маска, залитая currentColor. Один SVG-файл
+  из ЛР № 17 переиспользуется в любом цветовом контексте: цвет
+  наследуется от родителя.
+*/
+
+.icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: var(--icon-size, 24px);
+  height: var(--icon-size, 24px);
+  background-color: currentColor;
+  -webkit-mask-image: var(--icon-source);
+  mask-image: var(--icon-source);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}

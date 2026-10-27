@@ -1,0 +1,271 @@
+/*
+  Тема проекта поверх Bootstrap 5.3, перенесена из ЛР № 23.
+
+  Файл подключается в pages/_app.js после bootstrap.min.css и
+  переопределяет CSS-переменные библиотеки, поэтому фирменные цвета
+  и радиусы из дизайн-системы ЛР № 17 наследуются всеми компонентами
+  React Bootstrap автоматически.
+*/
+
+/* ---- палитра дизайн-системы (ЛР № 17) ---- */
+:root {
+  --brand-primary: #4f46e5;
+  --brand-primary-hover: #4338ca;
+  --brand-primary-pressed: #3730a3;
+  --brand-primary-subtle: #eef2ff;
+  --brand-accent: #22d3ee;
+  --brand-ink: #0f172a;
+  --brand-indigo: #312e81;
+}
+
+/* ---- глобальные переменные Bootstrap ---- */
+:root {
+  --bs-font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial,
+    sans-serif;
+
+  --bs-primary: #4f46e5;
+  --bs-primary-rgb: 79, 70, 229;
+  --bs-link-color: #4f46e5;
+  --bs-link-color-rgb: 79, 70, 229;
+  --bs-link-hover-color: #3730a3;
+  --bs-link-hover-color-rgb: 55, 48, 163;
+
+  --bs-body-color: #0f172a;
+  --bs-body-color-rgb: 15, 23, 42;
+  --bs-body-bg: #f8fafc;
+  --bs-body-bg-rgb: 248, 250, 252;
+  --bs-secondary-color: rgba(100, 116, 139, 1);
+
+  --bs-border-color: #e2e8f0;
+  --bs-border-radius: 0.75rem;
+  --bs-border-radius-sm: 0.625rem;
+  --bs-border-radius-lg: 1rem;
+  --bs-border-radius-xl: 1.25rem;
+  --bs-border-radius-pill: 50rem;
+}
+
+/* ---- навигация ---- */
+.site-nav {
+  --bs-navbar-color: rgba(255, 255, 255, 0.72);
+  --bs-navbar-hover-color: #fff;
+  --bs-navbar-active-color: #fff;
+  background: var(--brand-ink) !important;
+}
+
+.site-nav .nav-link.active {
+  box-shadow: inset 0 -2px 0 var(--brand-accent);
+}
+
+/* ---- кнопки ---- */
+.btn-primary {
+  --bs-btn-bg: var(--brand-primary);
+  --bs-btn-border-color: var(--brand-primary);
+  --bs-btn-hover-bg: var(--brand-primary-hover);
+  --bs-btn-hover-border-color: var(--brand-primary-hover);
+  --bs-btn-active-bg: var(--brand-primary-pressed);
+  --bs-btn-active-border-color: var(--brand-primary-pressed);
+  --bs-btn-disabled-bg: var(--brand-primary);
+  --bs-btn-disabled-border-color: var(--brand-primary);
+  --bs-btn-focus-shadow-rgb: 79, 70, 229;
+}
+
+.btn-outline-light:hover {
+  --bs-btn-hover-color: var(--brand-ink);
+}
+
+.btn {
+  --bs-btn-padding-y: 0.625rem;
+  --bs-btn-padding-x: 1.25rem;
+  --bs-btn-font-weight: 600;
+}
+
+.btn-sm {
+  --bs-btn-padding-y: 0.3125rem;
+  --bs-btn-padding-x: 0.75rem;
+}
+
+/* ---- карточки ---- */
+.card {
+  --bs-card-border-color: #e2e8f0;
+  --bs-card-border-radius: 1rem;
+  --bs-card-inner-border-radius: 1rem;
+  --bs-card-spacer-y: 1.25rem;
+  --bs-card-spacer-x: 1.25rem;
+  --bs-card-cap-padding-y: 0.875rem;
+  transition: box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16) !important;
+}
+
+/* кнопка «в избранное» должна быть над растянутой ссылкой карточки */
+.speaker-star {
+  z-index: 2;
+  --bs-btn-padding-x: 0.5rem;
+  --bs-btn-padding-y: 0.5rem;
+  line-height: 1;
+}
+
+/* ---- аккордеон ---- */
+.accordion {
+  --bs-accordion-border-color: #e2e8f0;
+  --bs-accordion-border-radius: 1rem;
+  --bs-accordion-inner-border-radius: 1rem;
+  --bs-accordion-btn-padding-y: 1.125rem;
+  --bs-accordion-active-color: var(--brand-primary-pressed);
+  --bs-accordion-active-bg: var(--brand-primary-subtle);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.35);
+}
+
+.accordion-button {
+  font-weight: 600;
+}
+
+/* ---- поля формы ---- */
+.form-control {
+  --bs-border-radius: 0.625rem;
+  padding: 0.6875rem 0.875rem;
+}
+
+.form-control:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.35);
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+}
+
+/* ---- первый экран ---- */
+.hero {
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(49, 46, 129, 0.82) 100%),
+    image-set(url('/images/banner-hero-1x.webp') 1x, url('/images/banner-hero-2x.webp') 2x);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-logo {
+  height: 56px;
+  width: auto;
+}
+
+/* ---- таблица расписания ---- */
+.table > :not(caption) > * > * {
+  padding: 0.875rem 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover {
+    transition-duration: 0.01ms;
+    transform: none;
+  }
+}
+
+/* ======================================================================
+   Доступность (ЛР № 30)
+   ====================================================================== */
+
+/*
+  Видимый фокус для всех интерактивных элементов (WCAG 2.4.7, 2.4.11).
+  Стандартное кольцо Bootstrap - полупрозрачная синяя тень 25 %: на светлом
+  фоне оно заметно, а на тёмном меню его контраст 1,32:1 при норме 3:1.
+  Контур рисуется только при навигации с клавиатуры (:focus-visible),
+  при клике мышью не появляется.
+*/
+:root {
+  --focus-ring-color: #4f46e5; /* 6,0:1 к фону страницы #f8fafc */
+  --focus-ring-on-dark: #22d3ee; /* 9,9:1 к фону меню #0f172a */
+}
+
+/*
+  Bootstrap сбрасывает outline у .btn, .nav-link, .accordion-button
+  и .form-control селекторами из класса и псевдокласса, поэтому здесь
+  перечислены те же классы: иначе правило проиграло бы по специфичности.
+*/
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.navbar-brand:focus-visible,
+.navbar-toggler:focus-visible,
+.accordion-button:focus-visible,
+.form-control:focus-visible {
+  outline: 3px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* в тёмном меню и на тёмном первом экране контур светлый */
+.site-nav a:focus-visible,
+.site-nav .nav-link:focus-visible,
+.site-nav .navbar-brand:focus-visible,
+.site-nav .navbar-toggler:focus-visible,
+.hero a:focus-visible,
+.hero .btn:focus-visible {
+  outline: 3px solid var(--focus-ring-on-dark);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.site-nav .nav-link:focus-visible {
+  border-radius: 0.375rem;
+}
+
+/*
+  Текущая страница отмечена не только цветом и нижней чертой, но и
+  атрибутом aria-current="page", который зачитывает экранный диктор.
+*/
+.site-nav .nav-link[aria-current='page'] {
+  color: #fff;
+}
+
+/* у карточки ссылка растянута на всю площадь: контур рисуется по карточке */
+.card:has(.stretched-link:focus-visible) {
+  outline: 3px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+.card .stretched-link:focus-visible {
+  outline: none;
+}
+
+/* аккордеон: собственная тень Bootstrap заменена контуром */
+.accordion-button:focus-visible {
+  box-shadow: none;
+  outline-offset: -3px;
+  z-index: 3;
+}
+
+/* поле ввода: контур вместо полупрозрачной тени */
+.form-control:focus-visible {
+  box-shadow: none;
+}
+
+/* main получает фокус по ссылке пропуска, контур ему не нужен */
+main:focus {
+  outline: none;
+}
+
+/* ссылка «Перейти к основному содержимому» */
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1100;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.625rem;
+  background: #fff;
+  color: var(--brand-ink);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
+}
